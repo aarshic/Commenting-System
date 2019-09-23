@@ -7,7 +7,7 @@ It is a commenting system where one can comment as well as upvote or downvote an
 MongoDB (shell version: 4.0.12), npm (v6.9.0) and nodeJS (v10.16.2) should be installed. A Web browser(preferably Chrome).
 
 # Installation Instructions
-1. clone the project git clone `https://github.com/aarshic/Commenting-System.git`.
+1. clone the project `git clone https://github.com/aarshic/Commenting-System.git`.
 2. cd to project folder `cd Commenting-System`.
 3. Install npm using `npm install`.
 4. Create package.json using `npm init`.
@@ -23,4 +23,3 @@ HTML\
 CSS\
 jQuery\
 Bootstrap\
-Font Awesome API
