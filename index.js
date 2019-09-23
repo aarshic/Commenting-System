@@ -32,3 +32,8 @@ app.get("/",function(req,res){
             res.render("index",{commented:allComments});
 	});
 });
+
+var PORT=8080;
+app.listen(PORT,function(req,res){
+	console.log("Server started successfully");
+});
