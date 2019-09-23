@@ -33,6 +33,29 @@ app.get("/",function(req,res){
 	});
 });
 
+
+app.post("/upvote",function(req,res){
+	var id=req.body.id;
+	var old=Number(req.body.val);
+    comments.findByIdAndUpdate(id,{upvote: old+1},function(err,res){
+        if(err)
+            console.log(err);
+    });
+	res.redirect("/");
+});
+
+
+app.post("/downvote",function(req,res) {
+    var id=req.body.id;
+    var old=Number(req.body.val);
+    console.log(req.body);
+    comments.findByIdAndUpdate(id,{downvote: old+1},function(err,res){
+        if(err)
+            console.log(err);
+    });
+	res.redirect("/");
+});
+
 var PORT=8080;
 app.listen(PORT,function(req,res){
 	console.log("Server started successfully");
