@@ -20,3 +20,15 @@ var CommentSchema=mongoose.Schema({
 });
 
 var comments=mongoose.model("Comments",CommentSchema);
+
+app.use(bodyparser.urlencoded({extended: true}));
+app.set("view engine","ejs");
+
+app.get("/",function(req,res){
+	comments.find({}, function(err,allComments){
+        if(err)
+            console.log(err);
+        else
+            res.render("index",{commented:allComments});
+	});
+});
