@@ -3,7 +3,7 @@ var bodyparser  =require("body-parser");
 var mongoose=require("mongoose");
 var app=express();
 
-mongoose.connect("mongodb://localhost/commentingsystem", {
+mongoose.connect("mongodb://localhost/mydb", {
     useNewUrlParser: true
   }).then(() => {
     console.log("Successfully connected to the database");    
@@ -34,6 +34,20 @@ app.get("/",function(req,res){
 });
 
 
+app.post("/",function(req,res){
+    var n= req.body.auth;
+    var bdy= req.body.txtcom;
+    console.log(res.body);
+    var newComment= {name:n,body:bdy,upvote:0,downvote:0};
+    
+    console.log(newComment);
+	comments.create(newComment,function(err,camp){
+        if(err)
+            console.log(err);
+        else
+            res.redirect("/");
+    });
+});
 app.post("/upvote",function(req,res){
 	var id=req.body.id;
 	var old=Number(req.body.val);
@@ -56,7 +70,6 @@ app.post("/downvote",function(req,res) {
 	res.redirect("/");
 });
 
-var PORT=8080;
-app.listen(PORT,function(req,res){
+app.listen(8080,function(req,res){
 	console.log("Server started successfully");
 });
